@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -6,17 +6,17 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 /* START: Main Header Style */
 .header-area {
   display: grid;
   row-gap: 50px;
   grid-template-areas:
-    'top'
-    'middle'
-    'bottom'
-    'hero';
+    "top"
+    "middle"
+    "bottom"
+    "hero";
 }
 .header-area .header-item:nth-child(1) {
   background-color: black;
@@ -130,6 +130,8 @@ body {
   position: relative;
   flex: 1 1 0;
   height: 400px;
+  overflow: hidden;
+  border-radius: 15px;
 }
 
 .hero-area .hero-item img {
@@ -144,11 +146,79 @@ body {
   position: absolute;
   width: 85%;
   bottom: 0;
+  left: 0;
   color: white;
   padding: 0 0 40px 40px;
+  height: 60%;
+  z-index: 10;
 }
 .hero-area .hero-item .feature-content .post-title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
+  margin-top: 15px;
+}
+.hero-area .hero-item .feature-content .author {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.hero-area .hero-item .feature-content .date-publish {
+  font-size: 0.75rem;
+  font-weight: 400;
+  display: inline-block;
+  margin-top: 10px;
+}
+.hero-area .hero-item .feature-content a {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: white;
+  padding: 15px 30px;
+  background-color: #ff9000;
+  text-decoration: none;
+  border-radius: 25px;
+  margin-top: 25px;
+}
+
+.hero-area .hero-item .feature-content a:hover {
+  color: black;
+  background-color: white;
+  transition: all 1s;
+}
+.hero-area .hero-item .hoverable {
+  position: absolute;
+  width: calc(100% / 2);
+  height: calc(100% / 2);
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+}
+.hero-area .hero-item .hoverable.hover-1 {
+  top: 0;
+  left: 0;
+  border-radius: 20px 0 0 0;
+  transform: translateY(-100%);
+}
+
+.hero-area .hero-item .hoverable.hover-2 {
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+}
+
+.hero-area .hero-item .hoverable.hover-3 {
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.hero-area .hero-item .hoverable.hover-4 {
+  bottom: 0;
+  right: 0;
+  transform: translateY(100%);
+}
+
+.hero-area .hero-item:hover .hoverable {
+  visibility: visible;
+  transform: none;
+  transition: all 0.5s;
 }
 /* END: Main Header Style */
