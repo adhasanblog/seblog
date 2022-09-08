@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -6,17 +6,18 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 /* START: Main Header Style */
 .header-area {
   display: grid;
   row-gap: 50px;
+  grid-template-columns: 100%;
   grid-template-areas:
-    "top"
-    "middle"
-    "bottom"
-    "hero";
+    'top'
+    'middle'
+    'bottom'
+    'hero';
 }
 .header-area .header-item:nth-child(1) {
   background-color: black;
@@ -42,14 +43,15 @@ body {
   justify-content: space-between;
 }
 .logo-area .logo {
+  flex: 0 0 30%;
 }
 
 .logo-area .space-ads {
   display: flex;
+  flex: 0 0 70%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 1000px;
   height: 100px;
   background-color: #f1f1f1;
   text-align: center;
@@ -75,6 +77,10 @@ body {
   display: flex;
   gap: 30px;
 }
+
+.nav-area .nav-list .nav-item {
+  position: relative;
+}
 .nav-area.primary .nav-list .nav-item {
   padding: 25px 0;
 }
@@ -83,6 +89,7 @@ body {
 }
 .nav-area.primary .nav-list .nav-item a {
   font-size: 1rem;
+  font-weight: 700;
   text-transform: uppercase;
   color: black;
   text-decoration: none;
@@ -103,19 +110,65 @@ body {
   font-size: 0.75em;
   margin-left: 10px;
 }
-.nav-area .nav-list .nav-item a:hover {
+.nav-area .nav-list .nav-item:hover a {
   color: #ff9000;
 }
-
+.nav-area .nav-list .nav-item:hover i {
+  color: #ff9000;
+  transition: all 1s;
+}
+.nav-area .search {
+  position: relative;
+}
+.nav-area .search input {
+  right: 0;
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  padding: 0 50px 0 25px;
+  border-radius: 50px 0 0 50px;
+  font-size: 1rem;
+  border: 1px solid #e5e5e5;
+  outline: 1px solid #e5e5e5;
+  visibility: hidden;
+}
 .nav-area .search button {
+  position: relative;
   width: 50px;
   height: 50px;
   background-color: #ff9023;
   color: white;
   border: none;
   outline: none;
-  border-radius: 50%;
+  border-radius: 50px 0 0 50px;
   cursor: pointer;
+  z-index: 100;
+}
+.sub-nav-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  width: 200px;
+  background-color: #f1f1f1;
+  border-top: 2px solid #ff9032;
+  z-index: 999;
+  transform: scaleY(0);
+  visibility: hidden;
+  transition: all 0.3s;
+  transform-origin: top;
+}
+.nav-item.active .sub-nav-list {
+  visibility: visible;
+  transform: scaleY(100%);
+  transition: all 0.3s;
+}
+.sub-nav-list .sub-nav-item {
+  padding: 15px 15px;
+}
+
+.sub-nav-list .sub-nav-item:hover {
+  background-color: #ff9032;
 }
 
 .hero-area {
@@ -139,7 +192,6 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 15px;
 }
 
 .hero-area .hero-item .feature-content {
@@ -149,12 +201,13 @@ body {
   left: 0;
   color: white;
   padding: 0 0 40px 40px;
-  height: 60%;
+  height: max-content;
   z-index: 10;
 }
 .hero-area .hero-item .feature-content .post-title {
   font-size: 1.75rem;
   font-weight: 700;
+  line-height: 1.5em;
   margin-top: 15px;
 }
 .hero-area .hero-item .feature-content .author {
@@ -188,7 +241,7 @@ body {
   position: absolute;
   width: calc(100% / 2);
   height: calc(100% / 2);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   visibility: hidden;
 }
 .hero-area .hero-item .hoverable.hover-1 {
@@ -219,6 +272,94 @@ body {
 .hero-area .hero-item:hover .hoverable {
   visibility: visible;
   transform: none;
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 /* END: Main Header Style */
+
+/* START: Breakpoint Tablet */
+@media screen and (max-width: 1350px) and (min-width: 720px) {
+  .logo-area {
+    max-width: 100%;
+    padding: 0 5%;
+  }
+  .nav-area {
+    max-width: 100%;
+    max-width: 100%;
+    padding: 0 5%;
+  }
+
+  .hero-area {
+    padding: 0;
+    gap: 30px;
+  }
+  .hero-area .hero-item {
+    height: 250px;
+  }
+  .hero-area .hero-item .feature-content {
+    width: 100%;
+    height: 90%;
+    padding: 0 20px 20px;
+  }
+  .hero-area .hero-item .feature-content .post-title {
+    font-size: 1rem;
+  }
+}
+/* END: Breakpoint Tablet */
+@media screen and (max-width: 719px) and (min-width: 325px) {
+  .nav-area.secondary {
+    justify-content: center;
+  }
+  .nav-area.secondary .nav-list {
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 0;
+  }
+
+  .logo-area {
+    width: 100%;
+    justify-content: center;
+  }
+  .logo-area .logo {
+    flex: 0 0 0;
+  }
+  .logo-area .space-ads {
+    display: none;
+  }
+  .nav-area.primary {
+    width: 100%;
+  }
+
+  .nav-area.primary .nav-list {
+    display: none;
+  }
+  .hero-area {
+    flex-direction: column;
+    padding: 0;
+    height: 300px;
+  }
+  .hero-area .hero-item {
+    flex: 0 0 100%;
+    border-radius: 5px;
+  }
+  .hero-area .hero-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-area .hero-item .feature-content {
+    width: 100%;
+    height: 70%;
+    padding: 0 20px 20px;
+  }
+  .hero-area .hero-item .feature-content .post-title {
+    font-size: 1rem;
+  }
+  .hero-area .hero-item .feature-content .author {
+    font-size: 1rem;
+  }
+}
+
+/* START: Breakpoint Phone */
