@@ -76,8 +76,11 @@ body {
   list-style: none;
   display: flex;
   gap: 30px;
+  align-items: center;
 }
-
+.nav-area .menu-control-area {
+  display: none;
+}
 .nav-area .nav-list .nav-item {
   position: relative;
 }
@@ -145,6 +148,7 @@ body {
   z-index: 100;
 }
 .sub-nav-list {
+  display: block;
   position: absolute;
   top: 100%;
   left: 0;
@@ -161,7 +165,6 @@ body {
 .nav-item.active .sub-nav-list {
   visibility: visible;
   transform: scaleY(100%);
-  transition: all 0.3s;
 }
 .sub-nav-list .sub-nav-item {
   padding: 15px 15px;
@@ -176,7 +179,6 @@ body {
   margin: auto;
   display: flex;
   gap: 30px;
-  padding: 0 30px;
 }
 
 .hero-area .hero-item {
@@ -184,7 +186,7 @@ body {
   flex: 1 1 0;
   height: 400px;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 5t px;
 }
 
 .hero-area .hero-item img {
@@ -305,7 +307,62 @@ body {
   }
 }
 /* END: Breakpoint Tablet */
-@media screen and (max-width: 719px) and (min-width: 325px) {
+@media screen and (max-width: 719px) and (min-width: 300px) {
+  .header-area {
+    row-gap: 30px;
+  }
+  .nav-area.primary {
+    position: relative;
+  }
+  .nav-area .menu-control-area {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff9032;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .nav-area .menu-control-area i {
+    color: white;
+  }
+
+  .nav-area.primary .nav-list.active {
+    display: flex;
+    transform: none;
+    visibility: visible;
+  }
+  .nav-area.primary .nav-list {
+    background-color: #222222;
+    top: calc(100% + 20px);
+    right: 10px;
+    width: 80%;
+    height: max-content;
+    position: absolute;
+    flex-direction: column;
+    z-index: 999;
+    align-items: flex-start;
+    gap: 0;
+    border-radius: 10px;
+    transform: scaleY(0);
+    visibility: hidden;
+    transform-origin: top;
+    transition: all 0.3s;
+  }
+  .nav-area.primary .nav-list .nav-item {
+    width: 100%;
+    padding: 15px 15px;
+    color: white;
+  }
+
+  .nav-area.primary .nav-list .nav-item a {
+    color: white;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+  .nav-area.primary .nav-list .nav-item i {
+  }
   .nav-area.secondary {
     justify-content: center;
   }
@@ -314,6 +371,26 @@ body {
     flex-wrap: wrap;
     column-gap: 30px;
     row-gap: 0;
+  }
+  .nav-item.active .sub-nav-list {
+    height: max-content;
+  }
+  .sub-nav-list {
+    border: none;
+    position: relative;
+    top: 10px;
+    background-color: transparent;
+    height: 0;
+  }
+
+  .sub-nav-list .sub-nav-item {
+    padding: 15px 15px;
+  }
+  .sub-nav-list .sub-nav-item:hover {
+    background-color: transparent;
+  }
+  .nav-area .search button {
+    border-radius: 0 50px 50px 0;
   }
 
   .logo-area {
@@ -330,9 +407,6 @@ body {
     width: 100%;
   }
 
-  .nav-area.primary .nav-list {
-    display: none;
-  }
   .hero-area {
     flex-direction: column;
     padding: 0;
